@@ -67,15 +67,16 @@ def alexa_rank(website):
 	m1 = re.search(r'"global": (\d+?),', text_res, re.MULTILINE | re.IGNORECASE | re.DOTALL)
 	if m1:
 		global_rank = m1.group(1)
-		print(website, 'Global Rank:', global_rank)
-		
-	m2 = re.search(r'"us": (\d+?)\n', text_res, re.MULTILINE | re.IGNORECASE | re.DOTALL)
-	if m2:
-		us_rank = m2.group(1)
-		print(website, 'US Rank:', us_rank)
+		print(website, 'Global rank:', global_rank, sep=' ')
 	
-	if not m1 and not m2:
-		print(website, 'not ranked')
+	s1 = re.findall(r'<li data-value="([\d,]+?)">\W*? ([\w ]+?) <', text_res, re.MULTILINE | re.IGNORECASE | re.DOTALL)
+	if s1:
+		for i in range(0, len(s1)):
+			country_rank, country_name = s1[i]
+			print(website, country_name + ' rank:', country_rank, sep=' ')
+	
+	if not m1:
+		print(website, 'not ranked', sep=' ')
 
 
 
