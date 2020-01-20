@@ -67,32 +67,16 @@ def alexa_rank(website):
 	m1 = re.search(r'"global": (\d+?),', text_res, re.MULTILINE | re.IGNORECASE | re.DOTALL)
 	if m1:
 		global_rank = m1.group(1)
+		print(website, 'Global Rank:', global_rank)
 		
 	m2 = re.search(r'"us": (\d+?)\n', text_res, re.MULTILINE | re.IGNORECASE | re.DOTALL)
 	if m2:
 		us_rank = m2.group(1)
-	
-	if m1 or m2:
-		print(website, 'Global Rank:', global_rank)
 		print(website, 'US Rank:', us_rank)
-	else:
+	
+	if not m1 and not m2:
 		print(website, 'not ranked')
 
-
-################
-
-# EXAMPLE:
-
-alexa_rank('udemy.com')
-alexa_rank('lynda.com')
-alexa_rank('khanacademy.org')
-alexa_rank('codecademy.com')
-alexa_rank('coursera.org')
-alexa_rank('sololearn.com')
-alexa_rank('skillshare.com')
-alexa_rank('edx.org')
-alexa_rank('udacity.com')
-alexa_rank('random27374e2378web.com')
 
 
 

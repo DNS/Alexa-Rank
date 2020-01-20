@@ -3,6 +3,8 @@ Python script to get Alexa Rank
 
 Usage:
 ```
+from alexa import alexa_rank
+
 alexa_rank('bing.com')
 
 alexa_rank('google.com')
