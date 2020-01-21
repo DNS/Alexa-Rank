@@ -60,23 +60,25 @@ def http_post(hyperlink, params):
 def alexa_rank(website):
 	text_res = http_get('https://www.alexa.com/siteinfo/' + website)
 	#text_res = http_get('https://www.alexa.com/siteinfo/' + sys.argv[1])
-
-	global_rank = 0
-	us_rank = 0
-
-	m1 = re.search(r'"global": (\d+?),', text_res, re.MULTILINE | re.IGNORECASE | re.DOTALL)
+	
+	# find global rank
+	m1 = re.search(r'"global": ([\d,]+?),', text_res, re.MULTILINE | re.IGNORECASE | re.DOTALL)
 	if m1:
 		global_rank = m1.group(1)
 		print(website, 'Global rank:', global_rank, sep=' ')
 	
+	# find local country rank
 	s1 = re.findall(r'<li data-value="([\d,]+?)">\W*? ([\w ]+?) <', text_res, re.MULTILINE | re.IGNORECASE | re.DOTALL)
 	if s1:
 		for i in range(0, len(s1)):
 			country_rank, country_name = s1[i]
 			print(website, country_name + ' rank:', country_rank, sep=' ')
 	
+	# if not ranked by alexa
 	if not m1:
 		print(website, 'not ranked', sep=' ')
+		
+
 
 
 
