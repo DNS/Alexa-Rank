@@ -72,7 +72,7 @@ def alexa_rank(website):
 	if s1:
 		for i in range(0, len(s1)):
 			country_rank, country_name = s1[i]
-			print(website, country_name + ' rank:', country_rank, sep=' ')
+			print(website, country_name, 'rank:', country_rank, sep=' ')
 	
 	# if not ranked by alexa
 	if not m1:
