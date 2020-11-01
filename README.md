@@ -7,7 +7,7 @@ from alexa import alexa_rank
 
 alexa_rank('bing.com')
 alexa_rank('google.com')
-alexa_rank('random27374e2378web.com')
+alexa_rank('ebay.com')
 ```
 
 Usage from command prompt:
