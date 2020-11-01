@@ -13,7 +13,6 @@ alexa_rank('random27374e2378web.com')
 Usage from command prompt:
 ```
 alexa test.com abc.com amazon.com
-python alexa.py test.com abc.com amazon.com
 ```
 
 Usage from linux terminal:
