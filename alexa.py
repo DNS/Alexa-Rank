@@ -4,7 +4,7 @@ import re, sqlite3, time, sys, socket
 
 user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
 request_timeout = 5
-error_retry = 99
+error_retry = 3
 
 def http_get(hyperlink):
 	#ssl._create_default_https_context = ssl._create_unverified_context
@@ -40,23 +40,6 @@ def http_post(hyperlink, params):
 
 
 
-############
-### MAIN ###
-############
-
-
-#socks.set_default_proxy(socks.SOCKS5, "127.0.0.1", 9150)
-#socket.socket = socks.socksocket
-
-#data = {
-#	'param1':'value1',
-#	'param2':'value2',
-#}
-
-#text_res = http_post('https://test.com/search.php', data)
-#print(text_res)
-
-
 def alexa_rank(website):
 	text_res = http_get('https://www.alexa.com/siteinfo/' + website)
 	#text_res = http_get('https://www.alexa.com/siteinfo/' + sys.argv[1])
@@ -78,6 +61,26 @@ def alexa_rank(website):
 	if not m1:
 		print(website, 'not ranked', sep=' ')
 		
+
+############
+### MAIN ###
+############
+
+
+#socks.set_default_proxy(socks.SOCKS5, "127.0.0.1", 9150)
+#socket.socket = socks.socksocket
+
+#data = {
+#	'param1':'value1',
+#	'param2':'value2',
+#}
+
+#text_res = http_post('https://test.com/search.php', data)
+#print(text_res)
+
+if __name__ == "__main__":
+	for website in sys.argv:
+		alexa_rank(website)
 
 
 

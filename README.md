@@ -10,3 +10,7 @@ alexa_rank('google.com')
 alexa_rank('random27374e2378web.com')
 ```
 
+Usage from command line:
+```
+alexa.bat test.com abc.com amazon.com
+```
