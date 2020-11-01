@@ -19,14 +19,7 @@ alexa_rank('rarbg.to')
 alexa_rank('thepiratebay.org')
 alexa_rank('1337x.to')
 
-alexa_rank('qasir.id')
-alexa_rank('shopee.com')
-alexa_rank('lazada.com')
-alexa_rank('bukalapak.com')
 
-alexa_rank('tinder.com')
-alexa_rank('okcupid.com')
-alexa_rank('bumble.com')
 
 
 
