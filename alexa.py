@@ -84,7 +84,8 @@ if __name__ == "__main__":
 	if len(sys.argv) <= 1:
 		print('usage: \n  alexa website1.com website2.com')
 	else:
-		for website in sys.argv:
-			alexa_rank(website)
-
+		#for i in sys.argv[1:]:
+		for i in range(1, len(sys.argv)):
+			#alexa_rank(i)
+			alexa_rank(sys.argv[i])
 
