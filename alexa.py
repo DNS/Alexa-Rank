@@ -11,6 +11,7 @@ def http_get(hyperlink):
 	ctx = ssl.create_default_context()
 	ctx.check_hostname = False
 	ctx.verify_mode = ssl.CERT_NONE
+	
 	for i in range(error_retry):
 		try:
 			req = urllib.request.Request(hyperlink, headers={'User-Agent': user_agent}, data=None)
@@ -20,6 +21,7 @@ def http_get(hyperlink):
 		except Exception as e:
 			sys.stderr.write('error: http_get()\n')
 			time.sleep(2)
+
 
 # params: {'key1':'val1','key2':'val2'}
 def http_post(hyperlink, params):
@@ -79,16 +81,10 @@ def alexa_rank(website):
 #print(text_res)
 
 if __name__ == "__main__":
-	for website in sys.argv:
-		alexa_rank(website)
-
-
-
-
-
-
-
-
-
+	if len(sys.argv) <= 1:
+		print('usage: \n  alexa website1.com website2.com')
+	else:
+		for website in sys.argv:
+			alexa_rank(website)
 
 
