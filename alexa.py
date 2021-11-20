@@ -6,8 +6,8 @@ import xml.etree.ElementTree as ET
 
 
 def alexa_rank(website):
-	#text_res = crawler.http_get('https://www.alexa.com/siteinfo/' + website)
 	text_res = crawler.http_get('http://data.alexa.com/data?cli=10&url=' + website)
+		
 	#print(text_res)
 	
 	tree = ET.ElementTree(ET.fromstring(text_res))
