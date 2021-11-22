@@ -7,21 +7,27 @@ import xml.etree.ElementTree as ET
 
 def alexa_rank(website):
 	text_res = crawler.http_get('http://data.alexa.com/data?cli=10&url=' + website)
-		
 	#print(text_res)
 	
 	tree = ET.ElementTree(ET.fromstring(text_res))
 	root = tree.getroot()
-
-	#web = root.find('SD/POPULARITY').get('URL')
-	#web = web[0:-1]
-	global_rank = root.find('SD/POPULARITY').get('TEXT')
-	local_country = root.find('SD/COUNTRY').get('NAME')
-	local_rank = root.find('SD/COUNTRY').get('RANK')
 	
+	global_rank = None
+	local_country = None
+	local_rank = None
 	
-	print("{} Global rank: {}".format(website, global_rank))
-	print("{} {} rank: {}".format(website, local_country, local_rank))
+	try:
+		global_rank = root.find('SD/POPULARITY').get('TEXT')
+		local_country = root.find('SD/COUNTRY').get('NAME')
+		local_rank = root.find('SD/COUNTRY').get('RANK')
+	except:
+		pass
+		
+	
+	if global_rank:
+		print("{} Global rank: {}".format(website, global_rank))
+	if local_rank:
+		print("{} {} rank: {}".format(website, local_country, local_rank))
 	
 
 ############
