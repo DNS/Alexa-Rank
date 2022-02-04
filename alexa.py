@@ -26,6 +26,10 @@ def alexa_rank(website):
 	
 	if global_rank:
 		print("{} Global rank: {}".format(website, global_rank))
+	else:
+		print("{} not ranked".format(website))
+		return
+		
 	if local_rank:
 		print("{} {} rank: {}".format(website, local_country, local_rank))
 	
