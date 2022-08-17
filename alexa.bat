@@ -1,1 +1,1 @@
-python alexa.py %*
+powershell .\alexa.ps1 %*
