@@ -3,10 +3,10 @@ PowerShell script to get Alexa Rank
 
 Usage from Command Prompt:
 ```
-alexa.bat bing.com amazon.com ebay.com
+>alexa.bat bing.com amazon.com ebay.com
 ```
 
 Usage from PowerShell:
 ```
-.\alexa.ps1 bing.com amazon.com ebay.com
+PS> .\alexa.ps1 bing.com amazon.com ebay.com
 ```
