@@ -1,20 +1,9 @@
 
 
-function Write-Alexa {
-    foreach ($i in $args) {
-        $ret = get-alexa $i
-        if (-not $ret) {
-            Write-Host $i 'not ranked'
-            Continue
-        }
-        $global_rank, $local_rank, $local_coutry = $ret
-        Write-Host $i 'Global rank:' $global_rank
-        Write-Host $i ${local_coutry} 'rank:' $local_rank
-    }
-}
 
-function Get-Alexa {
-    $url = 'http://data.alexa.com/data?cli=10&url='+$i
+
+function Get-Alexa ($website) {
+    $url = 'http://data.alexa.com/data?cli=10&url=' + $website
     [xml] $r = Invoke-RestMethod -Uri $url -TimeoutSec 30
     if (-not $r.ALEXA.SD.POPULARITY.TEXT) {
         return 0
@@ -25,8 +14,30 @@ function Get-Alexa {
     return $global_rank, $local_rank, $local_coutry
 }
 
+function Write-Alexa ($websites) {
+    #$websites[0]
+    #$websites[1]
+    foreach ($i in $websites) {
+        #$i
+        $ret = Get-Alexa $i
+        if (-not $ret) {
+            Write-Host $i 'not ranked'
+            Continue
+        } else {
+            $global_rank, $local_rank, $local_coutry = $ret
+            Write-Host $i 'Global rank:' $global_rank
+            Write-Host $i ${local_coutry} 'rank:' $local_rank
+        }
+    }
+}
 
-Write-Alexa 'WWst994ctc03.com' 'zalora.com'
+if ($args) {
+    Write-Alexa $args
+    #$args
+} else {
+    Write-Host 'usage: '
+    Write-Host '  alexa website1.com website2.com'
+}
 
 
 
