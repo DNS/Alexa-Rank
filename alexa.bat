@@ -1,1 +1,1 @@
-powershell .\alexa.ps1 %*
+powershell alexa.ps1 %*
