@@ -28,8 +28,8 @@ function Write-Alexa ($websites) {
 if ($args) {
     Write-Alexa $args
 } else {
-    Write-Host 'usage: '
-    Write-Host '  alexa website1.com website2.com'
+    Write-Host 'usage:'
+    Write-Host '    alexa website1.com website2.com'
 }
 
 
