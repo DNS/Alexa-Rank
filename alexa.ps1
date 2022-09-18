@@ -1,7 +1,4 @@
 
-
-
-
 function Get-Alexa ($website) {
     $url = 'http://data.alexa.com/data?cli=10&url=' + $website
     [xml] $r = Invoke-RestMethod -Uri $url -TimeoutSec 30
@@ -15,10 +12,7 @@ function Get-Alexa ($website) {
 }
 
 function Write-Alexa ($websites) {
-    #$websites[0]
-    #$websites[1]
     foreach ($i in $websites) {
-        #$i
         $ret = Get-Alexa $i
         if (-not $ret) {
             Write-Host $i 'not ranked'
@@ -40,7 +34,8 @@ if ($args) {
 
 
 
-
+#######################################
+#######################################
 
 <#
 
